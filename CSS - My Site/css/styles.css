@@ -4,11 +4,13 @@ body {
     font-family: 'Cormorant', serif;
 }
 h1 {
+    color: #66BFBF;
     font-size: 5.625rem;
     margin: 50px auto 0 auto;
     font-family: 'Caveat', cursive;
 }
 h2{
+    color: #66BFBF;
     font-family: 'Nanum Gothic', sans-serif;
     font-size: 1.50rem;
 }
