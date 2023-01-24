@@ -2,6 +2,7 @@ body {
     margin: 0;
     text-align: center;
     font-family: 'Cormorant', serif;
+    color: #94B49F;
 }
 h1 {
     font-size: 5.625rem;
@@ -12,9 +13,18 @@ h2{
     font-weight: normal;
     font-family: 'Nanum Gothic', sans-serif;
     font-size: 1.50rem;
+    margin-top: 100px;
+    margin-bottom: 50px;
 }
 h3{
     font-family: 'Nanum Gothic', sans-serif;
+}
+hr{
+    border-style:none;
+    border-top-style: dotted;
+    border-color: #E5E3C9;
+    border-width: 5px;
+    width: 10%;
 }
 .top-container {
     background-color: #E5E3C9;
@@ -22,8 +32,12 @@ h3{
     padding-top: 100px;
 }
 .middle-container {
+    margin-bottom: 100px;
 }
 .bottom-container {
+    padding-top: 50px;
+    padding-bottom: 25px;
+    background-color: #B4CFB0;
 }
 .pro {
     text-decoration: underline;
@@ -38,3 +52,70 @@ h3{
     top: 50px;
     right: 300px;
  }
+ .skill-row{
+    margin: 100px auto;
+    width: 50%;
+    text-align: left;
+    line-height: 2;
+    color: #789395
+ }
+ .left-side-img{
+    width: 25%;
+    height: 25%;
+    float: left;
+    margin-right: 30px;
+ }
+ .right-side-img{
+    width: 25%;
+    height: 25%;
+    float: right;
+    margin-left: 30px;
+ }
+ .profile{
+    padding-top: 50px;
+ }
+ .profile-description{
+    color: #789395;
+    width: 50%;
+    margin: 50px auto 100px auto;
+ }
+ .profile-img{
+    width: 250px;
+    height: 250px;
+ }
+ .greeting{
+    margin-top: 50px;
+ }
+ .outro-description{
+    color: #789395;
+    margin-bottom: 50px;
+ }
+ .btn {
+    background: #B4CFB0;
+    background-image: -webkit-linear-gradient(top, #B4CFB0, #94B49F);
+    background-image: -moz-linear-gradient(top, #B4CFB0, #94B49F);
+    background-image: -ms-linear-gradient(top, #B4CFB0, #94B49F);
+    background-image: -o-linear-gradient(top, #B4CFB0, #94B49F);
+    background-image: linear-gradient(to bottom, #B4CFB0, #94B49F);
+    -webkit-border-radius: 8;
+    -moz-border-radius: 8;
+    border-radius: 8px;
+    font-family: Arial;
+    color: #ffffff;
+    font-size: 20px;
+    padding: 10px 20px 10px 20px;
+    text-decoration: none;
+  }
+  
+  .btn:hover {
+    background: #E5E3C9;
+    background-image: -webkit-linear-gradient(top, #E5E3C9, #789395);
+    background-image: -moz-linear-gradient(top, #E5E3C9, #789395);
+    background-image: -ms-linear-gradient(top, #E5E3C9, #789395);
+    background-image: -o-linear-gradient(top, #E5E3C9, #789395);
+    background-image: linear-gradient(to bottom, #E5E3C9, #789395);
+    text-decoration: none;
+  }
+  .footer-link{
+    color: #94B49F;
+  }
