@@ -21,6 +21,16 @@ body {
     padding: 7% 15%;
 }
 
+/* Sections */
+.colored-section {
+    background-color: #ff4c68;
+    color: #fff;
+}
+
+.white-section {
+    background-color: #fff;
+}
+
 h1, h2, h3, h4, h5, h6{
     font-family: "Montserrat", sans-serif;
     font-weight: bold;
@@ -57,15 +67,9 @@ p {
 }
 
 /* Title Section */
-#title {
-    background-color: #ff4c68;
-    color: #fff;
-    text-align: left;
-    padding: 3%;
-}
-
 #title .container-fluid {
     padding: 3% 15% 7%;
+    text-align: left;
 }
 
 .img-div {
@@ -81,8 +85,6 @@ p {
 
 /* Feature Section */
 #features {
-    padding: 7% 15%;
-    background-color: #fff;
     position: relative; 
 }
 
@@ -91,7 +93,7 @@ p {
 }
 
 .feature-box {
-  padding: 5%;
+  padding: 4.5%;
 }
 
 .feature-image {
@@ -104,9 +106,8 @@ p {
 
 /* Testimonial Section */
 
-#testimonials {
+#testimonials  {
   background-color: #ef8172;
-  color: #fff;
 }
 .testimonial-image {
   width: 10%;
@@ -140,11 +141,6 @@ p {
 .pricing-text {
     font-size: 3rem;
     line-height: 1.5rem;
-}
-
-#cta {
-    background-color: #ff4c68;
-    color: #fff;
 }
 
 .footer-icon {
