@@ -5,12 +5,14 @@ for (var i = 0; i < numDrumBtns; i++) {
   drums[i].addEventListener("click", function () {
     var buttonInnerHtml = this.innerHTML;
     playAudio(buttonInnerHtml);
+    buttonAnimation(buttonInnerHtml)
 
   });
 }
 
 document.addEventListener("keydown", function(event) {
     playAudio(event.key);
+    buttonAnimation(event.key);
 });
 
 function playAudio(key){
@@ -48,4 +50,13 @@ function playAudio(key){
           console.log(key);
           break;
       }
+}
+
+function buttonAnimation(currentKey){
+    var activeBtn = document.querySelector("."+currentKey);
+    activeBtn.classList.add("pressed");
+
+    setTimeout(function() {
+        activeBtn.classList.remove("pressed");
+    }, 100);
 }
