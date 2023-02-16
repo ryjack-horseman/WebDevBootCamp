@@ -12,7 +12,7 @@ $(".btn").click(function() {
     checkAnswer(userClickedPattern.length-1);
 });
 
-$(document).keypress(function(event) {
+$(document).keypress(function() {
     if(!started){
         $("h1").text("Level " + level);
         nextSequence();
