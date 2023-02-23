@@ -80,18 +80,18 @@
 
     
     <!-- Custom styles for this template -->
-    <link href="styles.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
   </head>
   <body class="text-center">
     
 <main class="form-signin w-100 m-auto">
-  <form>
+  <form action="/" method="post">
     <img class="mb-4" src="images/Indecisive.png" width="150" height="150">
     <h1 class="h3 mb-3 fw-normal">Sign up for our groovy news</h1>
 
-      <input type="text" class="form-control top" placeholder="First Name" required autofocus>
-      <input type="text" class="form-control middle" placeholder="Last Name" required>
-      <input type="email" class="form-control bottom" placeholder="Email" required>
+      <input type="text" class="form-control top" name="firstName" placeholder="First Name" required autofocus>
+      <input type="text" class="form-control middle" name="lastName" placeholder="Last Name" required>
+      <input type="email" class="form-control bottom" name="email" placeholder="Email" required>
 
     <button class="w-100 btn btn-lg btn-primary" type="submit">Sign Me Up!</button>
     <p class="mt-5 mb-3 text-muted">&copy; 2017–2022</p>
