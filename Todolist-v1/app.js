@@ -1,19 +1,21 @@
-
 const express = require("express");
 const bodyParser = require("body-parser");
 
 const app = express();
 
-app.get("/", function(req, res) {
-    var today = new Date();
+app.set("view engine", "ejs");
 
-    if(today.getDay() === 6 || today.getDay() === 0){
-        res.sendFile(__dirname + "/weekend.html");
-    } else{
-        res.sendFile(__dirname + "/weekday");
-    }
+app.get("/", function (req, res) {
+    var today = new Date();
+    var currDay = today.getDay();
+    var day = "";
+    //get day as "Monday, Tuesday, etc..."
+    const options = { weekday: "long" };
+    day = new Intl.DateTimeFormat("en-US", options).format(today);
+    
+    res.render("list", { kindOfDay: day });
 });
 
-app.listen(3000, function(){
+app.listen(3000, function () {
     console.log("Server started on port 3000");
-})
+});
