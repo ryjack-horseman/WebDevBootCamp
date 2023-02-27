@@ -18,8 +18,9 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
 
 app.get("/", function(req, res){
-    res.render("home", {startingContent: homeStartingContent});
-    console.log(posts);
+    res.render("home", {startingContent: homeStartingContent,
+    posts: posts});
+
 });
 
 app.get("/about", function(req, res){
@@ -44,5 +45,5 @@ app.post("/compose", function(req, res){
 });
 
 app.listen(3000, function(){
-  console.log("Server Started at localhost:3000");
+  
 });
