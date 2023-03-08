@@ -35,7 +35,7 @@ const defaultItems = [item1, item2, item3];
 
 const listSchema = {
   name: String,
-  items: [itemsSchema]
+  items: [itemsSchema],
 }
 
 const List = mongoose.model("List", listSchema);
@@ -59,11 +59,22 @@ app.get("/", function (req, res) {
 
 app.post("/", function (req, res) {
   const itemName = req.body.newItem;
+  const listName = req.body.list;
+
   const item = new Item({
     name: itemName
   });
-  item.save();
-  res.redirect("/");
+
+  if(listName === "Today"){
+    item.save();
+    res.redirect("/");
+  }else{
+    getList(listName).then((list) => {
+      list.items.push(item);
+      list.save();
+      res.redirect("/"+listName);
+    });
+  }
 });
 
 
