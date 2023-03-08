@@ -33,6 +33,13 @@ const item3 = new Item({
 
 const defaultItems = [item1, item2, item3];
 
+const listSchema = {
+  name: String,
+  items: [itemsSchema]
+}
+
+const List = mongoose.model("List", listSchema);
+
 app.get("/", function (req, res) {
   getItems().then((list) => {
     if (list.length === 0) {
@@ -68,8 +75,23 @@ app.post("/delete", function (req, res) {
   });
 });
 
-app.get("/work", function (req, res) {
-  res.render("list", { listTitle: "Work List", newListItems: workItems });
+app.get("/:customListName", function(req, res){
+  const customListName = req.params.customListName;
+  getList(customListName).then((list) => {
+
+    if(!list){
+      //list doesn't exist
+      const list = new List({
+        name: customListName,
+        items: defaultItems 
+      });
+      list.save();
+      res.redirect("/"+customListName);
+    }else{
+      //show and existing list
+      res.render("list", {listTitle: list.name, newListItems: list.items});
+    }
+  });
 });
 
 app.get("/about", function (req, res) {
@@ -83,4 +105,9 @@ app.listen(3000, function () {
 async function getItems() {
   //const items = await Item.find();
   return await Item.find();
+}
+
+async function getList(customListName) {
+  //const items = await Item.find();
+  return await List.findOne({name: customListName});
 }
