@@ -35,6 +35,12 @@ app.post("/articles", function(req, res){
    });
 });
 
+app.delete("/articles", function(req, res){
+    deleteArticles().then(x => {
+        res.send("Successfully deleted all articles");
+    });
+});
+
 app.listen(3000, function() {
     console.log("Server started on port 3000");
 });
@@ -45,4 +51,11 @@ async function getArticles() {
 
 async function saveArticle(article){
     return await article.save();
-  }
+}
+
+async function deleteArticles(){
+    return await Article.deleteMany();
+}
+
+//title
+//content
