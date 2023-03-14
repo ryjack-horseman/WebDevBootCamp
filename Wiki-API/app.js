@@ -39,12 +39,23 @@ app
     });
   });
 
+app.route("/articles/:articleTitle")
+.get(function(req, res){
+    getArticle(req.params.articleTitle).then(article => {
+        res.send(article);
+    });
+});
+
 app.listen(3000, function () {
   console.log("Server started on port 3000");
 });
 
 async function getArticles() {
   return await Article.find();
+}
+
+async function getArticle(articleTitle){
+    return await Article.findOne({title: articleTitle});
 }
 
 async function saveArticle(article) {
