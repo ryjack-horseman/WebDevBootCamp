@@ -2,6 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const ejs = require("ejs");
 const mongoose = require("mongoose");
+var ObjectID = require('mongodb').ObjectID;
 
 const app = express();
 
@@ -44,6 +45,11 @@ app.route("/articles/:articleTitle")
     getArticle(req.params.articleTitle).then(article => {
         res.send(article);
     });
+})
+.put(function(req, res){
+    updateArticle(req).then(x => {
+        res.send("updated");
+    });
 });
 
 app.listen(3000, function () {
@@ -64,6 +70,16 @@ async function saveArticle(article) {
 
 async function deleteArticles() {
   return await Article.deleteMany();
+}
+
+async function updateArticle(articleReq){
+    return await Article.updateOne(
+        {"title": articleReq.params.articleTitle},
+        {$set: {
+            "title": articleReq.body.title,
+            "content": articleReq.body.content,
+        }
+        });
 }
 
 //title
