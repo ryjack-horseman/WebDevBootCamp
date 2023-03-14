@@ -55,6 +55,11 @@ app.route("/articles/:articleTitle")
     patchArticle(req).then(x => {
         res.send("patched successfully");
     });
+})
+.delete(function(req, res){
+    deleteArticle(req.params.articleTitle).then(x => {
+        res.send("Successfully deleted");
+    })
 });
 
 app.listen(3000, function () {
@@ -75,6 +80,10 @@ async function saveArticle(article) {
 
 async function deleteArticles() {
   return await Article.deleteMany();
+}
+
+async function deleteArticle(article) {
+    return await Article.deleteOne({title: article});
 }
 
 async function updateArticle(articleReq){
