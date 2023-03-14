@@ -2,3 +2,4 @@
 HTMLPersonalSite/.DS_Store
 .DS_Store
 node_modules/
+Secrets/.env
