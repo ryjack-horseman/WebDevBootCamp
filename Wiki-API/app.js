@@ -50,6 +50,11 @@ app.route("/articles/:articleTitle")
     updateArticle(req).then(x => {
         res.send("updated");
     });
+})
+.patch(function(req, res){
+    patchArticle(req).then(x => {
+        res.send("patched successfully");
+    });
 });
 
 app.listen(3000, function () {
@@ -73,13 +78,17 @@ async function deleteArticles() {
 }
 
 async function updateArticle(articleReq){
+    return await Article.replaceOne(
+        {title: articleReq.params.articleTitle},
+        {title: articleReq.body.title, content: articleReq.body.content},
+        );
+}
+
+async function patchArticle(articleReq){
     return await Article.updateOne(
-        {"title": articleReq.params.articleTitle},
-        {$set: {
-            "title": articleReq.body.title,
-            "content": articleReq.body.content,
-        }
-        });
+        {title: articleReq.params.articleTitle},
+        {$set: articleReq.body}
+    )
 }
 
 //title
