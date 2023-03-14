@@ -5,56 +5,54 @@ const mongoose = require("mongoose");
 
 const app = express();
 
-
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
-
 
 mongoose.connect("mongodb://localhost:27017/wikiDB");
 
 const articleSchema = {
-    title: String,
-    content: String 
-}
+  title: String,
+  content: String,
+};
 
 const Article = mongoose.model("Article", articleSchema);
 
-app.get("/articles", function(req, res){
-    getArticles().then(foundArticles => {
-        res.send(foundArticles);
+app
+  .route("/articles")
+  .get(function (req, res) {
+    getArticles().then((foundArticles) => {
+      res.send(foundArticles);
     });
-});
-
-app.post("/articles", function(req, res){
+  })
+  .post(function (req, res) {
     const article = new Article({
-        title: req.body.title,
-        content: req.body.content
+      title: req.body.title,
+      content: req.body.content,
     });
-   saveArticle(article).then(x => {
-    res.send("Successfully added a new article");
-   });
-});
-
-app.delete("/articles", function(req, res){
-    deleteArticles().then(x => {
-        res.send("Successfully deleted all articles");
+    saveArticle(article).then((x) => {
+      res.send("Successfully added a new article");
     });
-});
+  })
+  .delete(function (req, res) {
+    deleteArticles().then((x) => {
+      res.send("Successfully deleted all articles");
+    });
+  });
 
-app.listen(3000, function() {
-    console.log("Server started on port 3000");
+app.listen(3000, function () {
+  console.log("Server started on port 3000");
 });
 
 async function getArticles() {
-    return await Article.find();
+  return await Article.find();
 }
 
-async function saveArticle(article){
-    return await article.save();
+async function saveArticle(article) {
+  return await article.save();
 }
 
-async function deleteArticles(){
-    return await Article.deleteMany();
+async function deleteArticles() {
+  return await Article.deleteMany();
 }
 
 //title
