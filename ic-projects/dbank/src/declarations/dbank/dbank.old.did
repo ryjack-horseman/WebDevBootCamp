@@ -1,0 +1,5 @@
+service : {
+  checkBalence: () -> (nat) query;
+  topUp: (nat) -> () oneway;
+  withdrawAmount: (nat) -> () oneway;
+}
