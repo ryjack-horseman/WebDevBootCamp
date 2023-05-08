@@ -5,6 +5,7 @@ import Float "mo:base/Float";
 actor DBank{
   stable var currentValue: Float = 300;
   currentValue := 300;
+  Debug.print(debug_show(currentValue));
 
   let id = 2344546354645656;
   stable var startTime = Time.now();
@@ -29,6 +30,7 @@ actor DBank{
   };
 
   public query func checkBalence(): async Float {
+    Debug.print(debug_show(currentValue));
     return currentValue;
   };
 
